@@ -1,5 +1,9 @@
-apply plugin: 'java'
-apply plugin: 'idea'
+plugins {
+    id 'java'
+    id 'idea'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '1.2.0'
+}
 
 defaultTasks 'build'
 
@@ -9,6 +13,10 @@ targetCompatibility = '1.6'
 repositories {
     mavenCentral()
 }
+
+mainClassName = "org.aaron1011.asmtools.ASMTools"
+
+build.dependsOn(shadowJar)
 
 dependencies {
     compile 'org.ow2.asm:asm-debug-all:5.0.3'
